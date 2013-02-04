@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the StudentsCare Component." permissionId="STUDENTSCARE_VIEW"/>
+    <SecurityPermission description="Create operations in the StudentsCare Component." permissionId="STUDENTSCARE_CREATE"/>
+    <SecurityPermission description="Update operations in the StudentsCare Component." permissionId="STUDENTSCARE_UPDATE"/>
+    <SecurityPermission description="Delete operations in the StudentsCare Component." permissionId="STUDENTSCARE_DELETE"/>
+    <SecurityPermission description="ALL operations in the StudentsCare Component." permissionId="STUDENTSCARE_ADMIN"/>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="STUDENTSCARE_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="STUDENTSCARE_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="STUDENTSCARE_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="STUDENTSCARE_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="STUDENTSCARE_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="STUDENTSCARE_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="STUDENTSCARE_ADMIN"/>
+</entity-engine-xml>

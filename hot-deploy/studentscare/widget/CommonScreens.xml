@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main-decorator">
+        <section>
+            <actions>
+                <!-- base/top/specific map first, then more common map added for shared labels -->   
+                <property-map resource="HumanResUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="WorkEffortUiLabels" map-name="uiLabelMap" global="true"/>
+                <!-- layoutSettings.headerImageUrl can be used to specify an application specific logo; if not set,
+                     then the global layoutSettings.commonHeaderImageUrl (specified in GlobalDecorator) will be used. -->
+                <!--<set field="layoutSettings.headerImageUrl" value="/images/ofbiz_logo.gif" global="true"/>-->               
+                <set field="layoutSettings.javaScripts[]" value="/partymgr/static/partymgr.js" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/partymgr/static/partymgr.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/images/humanres/humanres.css" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/ui/development-bundle/external/jquery.cookie.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/jsTree/jquery.jstree.js" global="true"/>
+                
+                <!--  StudentsCare valiable -->         
+                <property-map resource="StudentsCareUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="layoutSettings.companyName" from-field="uiLabelMap.StudentsCareCompanyName" global="true"/>
+                <set field="layoutSettings.companySubtitle" from-field="uiLabelMap.StudentsCareCompanySubtitle" global="true"/>
+  				<!-- layoutSettings.headerImageUrl can be used to specify an application specific logo; if not set,
+                    then the global layoutSettings.commonHeaderImageUrl (specified in GlobalDecorator) will be used. -->
+                <!--<set field="layoutSettings.headerImageUrl" value="/images/ofbiz_logo.gif" global="true"/>-->
+
+                <!-- <set field="layoutSettings.headerMiddleBackgroundUrl" value="" global="true"/> -->
+                <!-- <set field="layoutSettings.headerRightBackgroundUrl" value="" global="true"/> -->
+                <!-- TODO: Use transform to specify component URI -->
+                <set field="layoutSettings.companyName" from-field="uiLabelMap.StudentsCareCompanyName" global="true"/>
+                <set field="layoutSettings.companySubtitle" from-field="uiLabelMap.StudentsCareCompanySubtitle" global="true"/>
+                <set field="activeApp" value="StudentsCare" global="true"/>
+                <set field="applicationMenuName" value="MainAppBar" global="true"/>
+                <set field="applicationMenuLocation" value="component://studentscare/widget/StudentsCareMenus.xml" global="true"/>
+                <!--set field="appheaderTemplate" value="component://studentscare/webapp/appheader.ftl"/-->
+                <set field="applicationTitle" value="${uiLabelMap.StudentsCareApplication}" global="true"/>
+            </actions>
+            <widgets>	
+                <include-screen name="GlobalDecorator" location="component://common/widget/CommonScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="StudentsCareCommonDecorator">
+        <section>
+            <actions>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-has-permission permission="STUDENTSCARE" action="_VIEW"/>
+                            </condition>
+                            <widgets>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.StudentsCareViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonExampleChartsDecorator">
+        <section>
+            <condition>
+                <if-has-permission permission="STUDENTSCARE" action="_VIEW"/>
+            </condition>
+            <actions>
+                <set field="headerItem" value="main"/>
+                <entity-condition entity-name="ExampleCountByType" list="chartData">
+                    <order-by field-name="exampleTypeId"/>
+                </entity-condition>
+                <set field="labelFieldName" value="exampleTypeId"/>
+                <set field="dataFieldName" value="total"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                    <include-menu name="StudentInfoTabBar" location="component://studentscare/widget/StudentcareMainMenus.xml"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <container style="lefthalf">
+                            <screenlet id="studentRisksTable" title="${uiLabelMap.studentRisksTable}" collapsible="true">
+                                <!--<include-form name="studentRisksTable" location="component://studentscare/widget/forms/TaskForms.xml"/>-->
+				                <platform-specific><html><html-template location="component://studentscare/webapp/studentscare/summary/StudentRisk.ftl"/></html></platform-specific>
+                            </screenlet>
+                        </container>
+                        <container style="righthalf">
+                             <screenlet id="studentGraphStatus" title="${uiLabelMap.studentGraphStatus}" collapsible="true">
+                                <include-screen name="FlotChart" location="component://common/widget/flotScreens.xml"/> 
+                            </screenlet>   
+                        </container>       
+                        <container style="buttom">             
+							<!--<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">-->
+                                <screenlet id="studentReportGroupByClassroom" title="${uiLabelMap.studentReportGroupByClassroom}" collapsible="true">
+                                    <section>   
+                                        <widgets>
+                                            <include-form name="myform" location="component://studentscare/widget/StudentsCareForms.xml" />    
+                                        </widgets>
+                                    </section>	
+                                </screenlet>
+	                        <!--</decorator-screen>-->
+	                    </container>    	           
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonExamplePieChartsDecorator">
+        <section>
+            <condition>
+                <if-has-permission permission="STUDENTSCARE" action="_VIEW"/>
+            </condition>
+            <actions>
+            	<set field="headerItem" value="studentsend"/><!-- this highlights the selected menu-item with name "studentsend" -->
+                <entity-condition entity-name="ExampleCountByType" list="chartData">
+                    <order-by field-name="exampleTypeId"/>
+                </entity-condition>
+                <set field="labelFieldName" value="exampleTypeId"/>
+                <set field="dataFieldName" value="total"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                    <include-menu name="StudentSeparateTabBar" location="component://studentscare/widget/StudentSendMenus.xml"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <container style="top">             
+							<!--<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">-->
+                                <screenlet id="studentReportGroupByClassroom" title="${uiLabelMap.studentReportGroupByClassroom}" collapsible="true">
+                                    <section>   
+                                        <widgets>
+                                            <include-form name="myform" location="component://studentscare/widget/StudentsCareForms.xml" />    
+                                        </widgets>
+                                    </section>	
+                                </screenlet>
+	                        <!--</decorator-screen>-->
+	                    </container>   
+                        <container style="lefthalf">
+                            <screenlet id="studentRisksTable" title="${uiLabelMap.studentRisksTable}" collapsible="true">
+                                <!--<include-form name="studentRisksTable" location="component://studentscare/widget/forms/TaskForms.xml"/>-->
+				                <platform-specific><html><html-template location="component://studentscare/webapp/studentscare/summary/StudentRisk.ftl"/></html></platform-specific>
+                            </screenlet>
+                        </container>
+                        <container style="righthalf">
+                             <screenlet id="studentGraphStatus" title="${uiLabelMap.studentGraphStatus}" collapsible="true">
+                                <include-screen name="FlotChart" location="component://common/widget/flotScreens.xml"/> 
+                            </screenlet>   
+                        </container>       
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>    
+
+    <screen name="SetupCompanyDecorator">
+        <section>
+            <condition>
+                <if-has-permission permission="STUDENTSCARE" action="_VIEW"/>
+            </condition>
+            <actions>
+                <set field="headerItem" value="main"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                    <include-menu name="StudentInfoTabBar" location="component://studentscare/widget/StudentcareMainMenus.xml"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container style="lefthalf">
+                                    <include-screen name="OrgTree"/>
+                                </container>
+		                        <container style="button-bar">
+		                            <screenlet id="studentRisksTable" title="${uiLabelMap.studentRisksTable}" collapsible="true">
+		                                <include-form name="setupCompanyForm" location="component://studentscare/widget/SetupCompanyForms.xml"/>
+		                            </screenlet>
+		                        </container>  
+                            </widgets>
+                        </section>
+                    </decorator-section>                    
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+<!--  
+    <screen name="SetupCompanyDecorator">
+        <section>
+            <widgets>
+                <decorator-screen name="main-decorator">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container style="lefthalf">
+                                    <include-screen name="OrgTree"/>
+                                </container>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+-->
+    
+    <screen name="OrgTree">
+        <section>
+            <actions>
+                <set field="partyId" value="Company" global="true"/>
+                <script location="component://studentscare/webapp/studentscare/WEB-INF/actions/category/CategoryTree.groovy"></script>
+            </actions>
+            <widgets>
+                <screenlet title="${uiLabelMap.FormFieldTitle_company}">
+                    <section>
+                        <widgets>
+                            <platform-specific><html><html-template location="component://studentscare/webapp/studentscare/studentscare/category/CategoryTree.ftl"/></html></platform-specific>
+                        </widgets>
+                    </section>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="PartyGroupTreeLine">
+        <section>
+            <widgets>
+                <label text="${partyAndGroup.groupName}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="PartyPersonTreeLine">
+        <section>
+            <widgets>
+                <label text="${partyAndPerson.firstName} ${partyAndPerson.lastName}"/>
+            </widgets>
+        </section>
+    </screen>
+
+</screens>
