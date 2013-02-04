@@ -1,0 +1,18 @@
+<forms  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+<form name="MyForm" target="someTargetURL" title="MyForm" >
+    <field name="studentReportGroupByClassroom">
+        <drop-down allow-empty="false">
+            <option key="_NA_" descrioption="No Description" />
+            <option key="key1" descrioption="M1" />
+            <option key="key2" descrioption="M2" />
+            <option key="key3" descrioption="M3" />
+            <option key="key4" descrioption="M4" />
+            <option key="key5" descrioption="M5" />
+            <option key="key6" descrioption="M6" />
+        </drop-down>
+    </field>
+    <field name="Button1"><submit /></field>
+</form>
+</forms>

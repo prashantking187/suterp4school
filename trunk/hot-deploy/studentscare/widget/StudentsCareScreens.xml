@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main">
+        <section>
+            <actions>
+				<service service-name="getVisualThemeResources">
+					<field-map field-name="visualThemeId"/>
+					<field-map field-name="themeResources" from-field="layoutSettings"/>
+				</service>            
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="tabButtonItem" value="ExampleBarChart"/>
+                <set field="chartType" value="Bars"/>
+                <set field="chartId" value="barChartDiv"/>
+            </actions>
+            <widgets>
+                <include-screen name="CommonExampleChartsDecorator" location="${parameters.mainDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>   
+
+    <screen name="setupCompany">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+                <include-screen name="SetupCompanyDecorator" location="${parameters.mainDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>   
+    
+    <screen name="studentinfo">
+        <section>
+            <actions>
+                <set field="headerItem" value="studentinfo"/><!-- this highlights the selected menu-item with name "studentinfo" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="StudentsCareCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+                            <decorator-section name="menu-bar">
+                                <section>				 			
+		                            <widgets>
+		                            	<include-menu name="StudentInfoTabBar" location="component://studentscare/widget/StudentInfoMenus.xml"/>
+		                                <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+		                                    <decorator-section name="menu-bar">
+		                                        <container style="button-bar">
+		                                            <link target="CreateProductionRun" text="${uiLabelMap.ManufacturingCreateProductionRun}" style="buttontext create"/>
+		                                        </container>
+		                                    </decorator-section>
+		                                    <decorator-section name="search-options">
+		                                        <include-form name="findProductionRun" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+		                                    </decorator-section>
+		                                    <decorator-section name="search-results">
+		                                        <include-form name="list" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+		                                    </decorator-section>
+		                                </decorator-screen>
+		                            </widgets>						 			
+                                </section>
+                            </decorator-section>
+						</decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="studentseparate">
+        <section>
+            <actions>
+                <set field="headerItem" value="studentseparate"/><!-- this highlights the selected menu-item with name "studentseparate" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="StudentsCareCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+						<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+							<decorator-section name="menu-bar">
+									<section>
+										<widgets>
+											<include-menu name="StudentSeparateTabBar" location="component://studentscare/widget/StudentSeparateMenus.xml"/>
+			                                <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+			                                    <decorator-section name="menu-bar">
+			                                        <container style="button-bar">
+			                                            <link target="CreateProductionRun" text="${uiLabelMap.ManufacturingCreateProductionRun}" style="buttontext create"/>
+			                                        </container>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-options">
+			                                        <include-form name="findProductionRun" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-results">
+			                                        <include-form name="list" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                </decorator-screen>
+			                            </widgets>	
+									</section>
+							 </decorator-section>
+						 </decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="studentsupport">
+        <section>
+            <actions>
+                <set field="headerItem" value="studentsupport"/><!-- this highlights the selected menu-item with name "studentsupport" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="StudentsCareCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+						<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+							<decorator-section name="menu-bar">
+									<section>
+										<widgets>
+											<include-menu name="StudentSeparateTabBar" location="component://studentscare/widget/StudentSupportMenus.xml"/>
+			                                <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+			                                    <decorator-section name="menu-bar">
+			                                        <container style="button-bar">
+			                                            <link target="CreateProductionRun" text="${uiLabelMap.ManufacturingCreateProductionRun}" style="buttontext create"/>
+			                                        </container>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-options">
+			                                        <include-form name="findProductionRun" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-results">
+			                                        <include-form name="list" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                </decorator-screen>
+			                            </widgets>	
+									</section>
+							 </decorator-section>
+						 </decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="studentsolve">
+        <section>
+            <actions>
+                <set field="headerItem" value="studentsolve"/><!-- this highlights the selected menu-item with name "studentsolve" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="StudentsCareCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+						<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+							<decorator-section name="menu-bar">
+									<section>
+										<widgets>
+											<include-menu name="StudentSeparateTabBar" location="component://studentscare/widget/StudentSolveMenus.xml"/>
+			                                <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+			                                    <decorator-section name="menu-bar">
+			                                        <container style="button-bar">
+			                                            <link target="CreateProductionRun" text="${uiLabelMap.ManufacturingCreateProductionRun}" style="buttontext create"/>
+			                                        </container>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-options">
+			                                        <include-form name="findProductionRun" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                    <decorator-section name="search-results">
+			                                        <include-form name="list" location="component://manufacturing/widget/manufacturing/ProductionRunForms.xml"/>
+			                                    </decorator-section>
+			                                </decorator-screen>
+			                            </widgets>	
+									</section>
+							 </decorator-section>
+						 </decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="studentsend">
+        <section>
+            <actions>
+                <set field="tabButtonItem" value="ExamplePieChart"/>
+                <set field="chartType" value="Pie"/>
+                <set field="chartId" value="pieChartDiv"/>
+            </actions>
+            <widgets>
+                <include-screen name="CommonExamplePieChartsDecorator" location="${parameters.mainDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+   <screen name="ExamplePieChart">
+        <section>
+            <actions>
+                <set field="tabButtonItem" value="ExamplePieChart"/>
+                <set field="chartType" value="Pie"/>
+                <set field="chartId" value="pieChartDiv"/>
+            </actions>
+            <widgets>
+                <include-screen name="CommonExampleChartsDecorator" location="${parameters.mainDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ExampleBarChart">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="tabButtonItem" value="ExampleBarChart"/>
+                <set field="chartType" value="Bars"/>
+                <set field="chartId" value="barChartDiv"/>
+            </actions>
+            <widgets>
+                <include-screen name="CommonExampleChartsDecorator" location="${parameters.mainDecoratorLocation}"/>
+				<container style="profile-left">
+					<label><br/>เมนูด้านซ้าย</label>
+				</container>
+				<container style="profile-bottom">
+					<label>เมนูด้านขวา</label>
+				</container>	
+            </widgets>
+        </section>
+    </screen>             
+
+</screens>

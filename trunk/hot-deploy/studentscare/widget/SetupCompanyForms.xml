@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+ 
+	<form name="setupCompanyForm" title="หน้าจอเพิ่มหน่วยงานย่อย" type="single" target="setupCompanyForm">
+		<field name="party_type_id" title="ชื่อหน่วยงาน"><text size="30"/></field>
+	    <field name="ClassroomID" title="เหลือกหน่วยงานหลัก">
+	        <drop-down allow-empty="false">
+	            <option key="1:กลุ่มงานบหารงานวิชาการ" descrioption="กลุ่มงานบหารงานวิชาการ" />
+	            <option key="2:กลุ่มงานงบประมาณและบริหารงานทั่วไป" descrioption="กลุ่มงานงบประมาณและบริหารงานทั่วไป" />
+	            <option key="3:กลุ่มงานบริหารงานบุคคล" descrioption="กลุ่มงานบริหารงานบุคคล" />
+	            <option key="4:กลุ่มงานนโยบายและแผน" descrioption="กลุ่มงานนโยบายและแผน" />
+	        </drop-down>
+	    </field>
+	    <field name="submitButton" title="${uiLabelMap.CommonFind}"><submit button-type="button"/></field>
+	</form>
+	
+</forms>
