@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="MainAppBar" title="${uiLabelMap.StudentsCareApplication}" extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="main" title="${uiLabelMap.CommonMain}"><link target="main"/></menu-item>
+        <menu-item name="studentinfo" title="${uiLabelMap.StudentInfo}"><link target="studentinfo"/></menu-item>
+        <menu-item name="studentseparate" title="${uiLabelMap.StudentSeparate}"><link target="studentseparate"/></menu-item>
+        <menu-item name="studentsupport" title="${uiLabelMap.StudentSupport}"><link target="studentsupport"/></menu-item>
+        <menu-item name="studentsolve" title="${uiLabelMap.StudentSolve}"><link target="studentsolve"/></menu-item>
+        <menu-item name="studentsend" title="${uiLabelMap.StudentSend}"><link target="studentsend"/></menu-item>
+
+		<!--
+        <menu-item name="ExampleBarChart" title="Bar chart"><link target="ExampleBarChart"/></menu-item>
+        <menu-item name="ExamplePieChart" title="Pie chart"><link target="ExamplePieChart"/></menu-item>
+		-->
+		
+    </menu>
+	
+	<menu name="StudentInfoTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="findStudent" title="${uiLabelMap.findStudent}" >
+            <link target="findStudent"/>
+        </menu-item>
+        <menu-item name="studentOverview" title="${uiLabelMap.studentOverview}">
+            <condition>
+                <not><if-empty field="students.studentId"/></not>
+            </condition>
+            <link target="studentOverview">
+                <parameter param-name="studentId" from-field="students.studentId"/>
+            </link>
+        </menu-item>
+        <menu-item name="editPayment" title="${uiLabelMap.AccountingPaymentTabHeader}">
+            <condition>
+                <and>
+                    <not><if-empty field="payment.paymentId"/></not>
+                    <if-compare field="payment.statusId" operator="equals" value="PMNT_NOT_PAID"/>
+                </and>
+            </condition>
+            <link target="editPayment">
+                <parameter param-name="paymentId" from-field="payment.paymentId"/>
+            </link>
+        </menu-item>
+        <menu-item name="editPaymentApplications" title="${uiLabelMap.AccountingPaymentTabApplications}">
+            <condition>
+                <and>
+                    <not><if-empty field="payment.paymentId"/></not>
+                    <or>
+                        <if-compare field="payment.statusId" operator="equals" value="PMNT_NOT_PAID"/>
+                        <if-compare field="payment.statusId" operator="equals" value="PMNT_RECEIVED"/>
+                        <if-compare field="payment.statusId" operator="equals" value="PMNT_SENT"/>
+                    </or>
+                </and>
+            </condition>
+            <link target="editPaymentApplications">
+                <parameter param-name="paymentId" from-field="payment.paymentId"/>
+            </link>
+        </menu-item>
+           <menu-item name="studentOverview" title="${uiLabelMap.studentOverview}">
+            <link target="studentOverview"/>
+        </menu-item>
+    </menu>
+</menus>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file. A component can override the
+         elements found in the common-controller.xml file. -->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+	<include location="component://party/webapp/partymgr/WEB-INF/controller.xml"/>
+	<include location="component://humanres/webapp/humanres/WEB-INF/controller.xml"/>
+    <description>Students Care Component Site Configuration File</description>
+    <owner>Mr.Paitoon  Thipsunathia</owner>
+
+    <!-- view handlers -->
+    <handler name="service-multi" type="request" class="org.ofbiz.webapp.event.ServiceMultiEventHandler"/>
+
+    <!-- Events to run on every request before security (chains exempt) -->
+    <!--
+    <preprocessor>
+    </preprocessor>
+    -->
+    <!-- Events to run on every request after all other processing (chains exempt) -->
+    <!--
+    <postprocessor>
+        <event name="test" type="java" path="org.ofbiz.webapp.event.TestEvent" invoke="test"/>
+    </postprocessor>
+    -->
+
+    <!-- Request Mappings -->
+    <request-map uri="main">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="main"/>
+    </request-map>
+    <request-map uri="authview">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="main"/>
+    </request-map>
+    <request-map uri="setupCompany">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="setupCompany"/>
+    </request-map>
+    <request-map uri="studentinfo">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="studentinfo"/>
+    </request-map>
+    <request-map uri="studentseparate">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="studentseparate"/>
+    </request-map>
+        <request-map uri="studentsupport">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="studentsupport"/>
+    </request-map>
+    <request-map uri="studentsolve">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="studentsolve"/>
+    </request-map>
+    <request-map uri="studentsend">
+    	<security https="true" auth="true"/>
+    	<response name="success" type="view" value="studentsend"/>
+    </request-map>        
+    <!--Chart requests-->
+    <request-map uri="ExampleBarChart">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ExampleBarChart"/>
+    </request-map>
+    <request-map uri="ExamplePieChart">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ExamplePieChart"/>
+    </request-map>
+    <!-- End of chart request mappings -->
+		
+    <!-- View Mappings -->
+    <view-map name="main" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#main"/>
+    <view-map name="myform" type="screen" page="component://studentscare/widget/StudentsCareForms.xml#myform"/>
+    <view-map name="studentinfo" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#studentinfo"/>
+    <view-map name="studentseparate" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#studentseparate"/>
+    <view-map name="studentsupport" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#studentsupport"/>
+    <view-map name="studentsolve" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#studentsolve"/>
+    <view-map name="studentsend" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#studentsend"/>
+    <!-- Chart view mapping -->
+    <view-map name="ExampleBarChart" page="component://example/widget/example/ExampleScreens.xml#ExampleBarChart" type="screen"/>
+    <view-map name="ExamplePieChart" page="component://example/widget/example/ExampleScreens.xml#ExamplePieChart" type="screen"/>
+	
+	<!-- Vendor Mappings -->
+	<view-map name="setupCompany" type="screen" page="component://studentscare/widget/StudentsCareScreens.xml#setupCompany"/>
+	<view-map name="viewprofile" type="screen" page="component://party/widget/partymgr/PartyScreens.xml#viewprofile"/>
+	
+    
+</site-conf>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <property key="STUDENTSCARE">
+        <value xml:lang="en">Students Care</value>
+        <value xml:lang="th">ดูแลช่วยเหลือนักเรียน</value>
+    </property>
+    <property key="StudentsCare">
+        <value xml:lang="en">Students Care</value>
+        <value xml:lang="th">ดูแลช่วยเหลือนักเรียน</value>
+    </property>
+    <property key="StudentsCareApplication">
+        <value xml:lang="en">Students' Care Application</value>
+        <value xml:lang="th">ระบบดูแลช่วยเหลือนักเรียน</value>
+    </property>
+    <property key="StudentsCareCompanyName">
+        <value xml:lang="en">OFBiz: StudentsCare</value>
+        <value xml:lang="th">OFBiz: ดูแลช่วยเหลือนักเรียน</value>
+    </property>
+    <property key="StudentsCareCompanySubtitle">
+        <value xml:lang="en">Part of the Open For Business Family of Open Source Software</value>
+        <value xml:lang="th">มหาวิทยาลัยเทคโนโลยีสุรนารี สำนักวิชาวิศวกรรมศาสตร์ สาขาวิชาวิศวกรรมคอมพิวเตอร์</value>
+    </property>
+    <property key="StudentsCareViewPermissionError">
+        <value xml:lang="en">You are not allowed to view this page.</value>
+        <value xml:lang="th">ท่านไม่ได้รับอนุญาตเข้าใช้งานหน้าจอนี้</value>
+    </property>
+    <property key="studentscare">
+        <value xml:lang="en">Students Care</value>
+        <value xml:lang="th">ดูแลช่วยเหลือนักเรียน</value>
+    </property>
+    <property key="setupCompany">
+        <value xml:lang="en">Setup Oraganization Structor</value>
+        <value xml:lang="th">ตั้งค่าโครงสร้างหน่วยงาน</value>
+    </property> 
+    <property key="StudentInfo">
+        <value xml:lang="en">Student Infomation</value>
+        <value xml:lang="th">การรู้จักนักเรียนเป็นรายบุคคล</value>
+    </property>    
+    <property key="StudentSeparate">
+        <value xml:lang="en">Student Separate</value>
+        <value xml:lang="th">การคัดกรองนักเรียน</value>
+    </property>  
+    <property key="StudentSupport">
+        <value xml:lang="en">Student Support</value>
+        <value xml:lang="th">การส่งเสริมนักเรียน</value>
+    </property>  
+    <property key="StudentSolve">
+        <value xml:lang="en">Student Solve</value>
+        <value xml:lang="th">การป้องกันและแก้ไขปัญหา</value>
+    </property>  
+    <property key="StudentSend">
+        <value xml:lang="en">Student Send</value>
+        <value xml:lang="th">การส่งต่อ</value>
+    </property>	
+    <property key="findStudent">
+        <value xml:lang="en">Find Student</value>
+        <value xml:lang="th">ค้นหา</value>
+    </property>	
+    <property key="studentOverview">
+        <value xml:lang="en">Student Overview</value>
+        <value xml:lang="th">รายงาน</value>
+    </property>	
+    <property key="studentRisksTable">
+        <value xml:lang="en">Student Risks Table</value>
+        <value xml:lang="th">ตารางแสดงรายชื่อนักเรียนกลุ่มเสี่ยง</value>
+    </property>	 
+    <property key="studentReportGroupByClassroom">
+        <value xml:lang="en">Student Report Group By Classroom</value>
+        <value xml:lang="th">รายงานสถานะนักเรียนแยกตามระดับชั้นเรียน</value>
+    </property>   
+    <property key="studentSelectClassroom">
+        <value xml:lang="en">Please select a class of students.</value>
+        <value xml:lang="th">โปรดเลือกระดับชั้นของนักเรียน</value>
+    </property>     
+    <property key="studentGraphStatus">
+        <value xml:lang="en">Student Graph Status</value>
+        <value xml:lang="th">กราฟแสดงสถานะนักเรียน</value>
+    </property>	        	
+    <property key="studentbio">
+        <value xml:lang="en">Student's Biography</value>
+        <value xml:lang="th">ประวัตินักเรียน</value>
+    </property>	
+    <property key="studentfamily">
+        <value xml:lang="en">Student's Family</value>
+        <value xml:lang="th">ข้อมูลครอบครัว</value>
+    </property>	
+    <property key="studentability">
+        <value xml:lang="en">Student's Ability</value>
+        <value xml:lang="th">ข้อมูลด้านความสามารถ</value>
+    </property>	
+    <property key="studenthealthy">
+        <value xml:lang="en">Student's Healthy</value>
+        <value xml:lang="th">ข้อมูลด้านสุขภาพ</value>
+    </property>	
+    <property key="studenteducationplan">
+        <value xml:lang="en">Student's Education Plan</value>
+        <value xml:lang="th">ข้อมูลด้านการวางแผนการศึกษาและอาชีพ</value>
+    </property>	
+    <property key="studentmap">
+        <value xml:lang="en">Student's Map</value>
+        <value xml:lang="th">แผนที่บ้าน</value>
+    </property>
+    <property key="studentrecord">
+        <value xml:lang="en">Student's Record</value>
+        <value xml:lang="th">ระเบียนสะสม</value>
+    </property>	
+    <property key="studentporfolio">
+        <value xml:lang="en">Student's Porfolio</value>
+        <value xml:lang="th">แฟ้มผลงาน</value>
+    </property>	
+    <property key="studentonhealth">
+        <value xml:lang="en">Student's On Health</value>
+        <value xml:lang="th">บันทึกการตรวจสุขภาพ</value>
+    </property>	
+    <property key="studentbehaviorevaluation">
+        <value xml:lang="en">Student's Behavior Evaluation</value>
+        <value xml:lang="th">แบบประเมินพฤติกรรม</value>
+    </property>	
+    <property key="filteringsetting">
+        <value xml:lang="en">Student's Filtering Setting</value>
+        <value xml:lang="th">เกณฑ์การคัดกรอง</value>
+    </property>	
+    <property key="filteringreport">
+        <value xml:lang="en">Student's Filtering Report</value>
+        <value xml:lang="th">รายงานผลการคัดกรอง</value>
+    </property>	      
+    <property key="studentpromotionactivities">
+        <value xml:lang="en">Student's Promotion Activities</value>
+        <value xml:lang="th">กิจกรรมการส่งเสริมนักเรียน</value>
+    </property>	
+    <property key="studentpromotionreport">
+        <value xml:lang="en">Student's Promotion Report</value>
+        <value xml:lang="th">รายงานการส่งเสริมนักเรียน</value>
+    </property>  
+    <property key="studentprotectionactivities">
+        <value xml:lang="en">Student's Protection and Solve Activities</value>
+        <value xml:lang="th">กิจกรรมป้องกันและแก้ไขปัญหา</value>
+    </property>	
+    <property key="studentprotectionreport">
+        <value xml:lang="en">Student's Protection and Solve Report</value>
+        <value xml:lang="th">รายงานผลการป้องกันและแก้ไขปัญหา</value>
+    </property> 
+    <property key="forwardinginformation">
+        <value xml:lang="en">Forwarding Information</value>
+        <value xml:lang="th">แบบบันทึกการส่งต่อ</value>
+    </property>	
+    <property key="forwardinginformationreport">
+        <value xml:lang="en">Forwarding Information Report</value>
+        <value xml:lang="th">รายงานแจ้งผลการส่งต่อ</value>
+    </property>
+    <property key="forwardinginformationsummary">
+        <value xml:lang="en">Forwarding Information Summary</value>
+        <value xml:lang="th">รายงานสรุปการส่งต่อ</value>
+    </property>	            
+</resource>
